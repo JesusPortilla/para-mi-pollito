@@ -324,14 +324,9 @@ section{
 </head>
 <body>
 
-<div style="display:none;">
-<iframe
-id="musicPlayer"
-width="0"
-height="0"
-allow="autoplay">
-</iframe>
-</div>
+<audio id="musicPlayer" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
 
 <section class="hero">
 
@@ -677,18 +672,16 @@ Two people who found each drawbacks in the most unexpected way and decided to wa
 
 <script>
 
-/* MUSICA */
-
+/* MUSICA NATIVA */
 function startJourney(){
+    const player = document.getElementById("musicPlayer");
+    player.play().catch(error => {
+        console.log("La reproducción automática requirió interacción del usuario:", error);
+    });
 
-document.getElementById("musicPlayer").src =
-"https://open.spotify.com/track/0gjhhuqKxswtR1KzYSpSfd?si=40c9319a0d2940a6";
-
-document.getElementById("contador")
-.scrollIntoView({
-behavior:"smooth"
-});
-
+    document.getElementById("contador").scrollIntoView({
+        behavior:"smooth"
+    });
 }
 
 /* CONTADOR */
